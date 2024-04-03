@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title> Multiplication Table </title>
+    
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h2> Multiplication Table </h2>
+    <p> Hello, user! Please enter the number of rows and columns (2-10) to generate the multiplication table: </p>
+    <button onclick = "generateMultiplicationTable()"> Generate Table </button>
+    <div id = "multiplicationTable"> </div>
+
+    <script>
+        function generateMultiplicationTable() {
+            let n, m;
+
+            while (true) {
+                n = parseInt(prompt("Please enter the number of rows (2-10):"));
+                m = parseInt(prompt("Please enter the number of columns (2-10):"));
+
+                if (!isNaN(n) && !isNaN(m) && n >= 2 && n <= 10 && m >= 2 && m <= 10) {
+                    break;
+                } else {
+                    alert("Error: Please enter values within the range of 2-10.");
+                }
+            }
+
+            let table = "<table>";
+
+            for (let i = 1; i <= n; i++) {
+                table += "<tr>";
+                for (let j = 1; j <= m; j++) {
+                    table += "<td>" + (i * j) + "</td>";
+                }
+                table += "</tr>";
+            }
+
+            table += "</table>";
+
+            document.getElementById("multiplicationTable").innerHTML = table;
+        }
+    </script>
+</body>
+
+</html>
